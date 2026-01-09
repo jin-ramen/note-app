@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+app.use(express.static('dist'))
+
 const cors = require('cors')
 app.use(cors({
   origin: "http://localhost:5173"
@@ -36,7 +38,7 @@ app.use(express.json())
 app.use(requestLogger)
 
 app.get('/', (request, response) => {
-  response.send('<h1>Hello World!</h1>')
+  response.send(index.html)
 })
 
 app.get('/api/notes', (request, response) => {
